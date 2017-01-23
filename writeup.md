@@ -1,7 +1,7 @@
 **Advanced Lane Finding Project**
 [//]: # (Image References)
 
-[image1]: ./camera_cal/img_undistorted.png "Undistorted Chessboard"
+[image1]: ./camera_cal/chessboard_undistorted.png "Undistorted Chessboard"
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
