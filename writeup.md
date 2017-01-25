@@ -3,10 +3,10 @@
 
 [image1]: ./camera_cal/chessboard_undistorted.png "Undistorted Chessboard"
 [image2]: ./camera_cal/test_img_undistorted.png "undistorted test image"
-[image3]: ./binary_img.png "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
+[image3]: ./test_img_binary.png "Binary Example"
+[image4]: ./test_img_warped.png "Warp Example"
+[image5]: ./test_img_polyfit.png "Fit Visual"
+[image6]: ./test_img_output.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
 ---
@@ -35,47 +35,40 @@ I used a combination of HLS color and x directional gradient thresholds to gener
 
 ####3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform includes a function called `warp()`, which appears in the IPython notebook.  The `warp()` function takes as inputs an image (`img`).  I chose to hardcode the source and destination points in the following manner:
 
 ```
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+    src = np.float32(
+        [[140,719],
+         [1220,719],
+         [780,480],
+         [540,480]])
+    
+    dst = np.float32(
+        [[240,719],
+         [1040,719],
+         [1040,300],
+         [240,300]])
 
 ```
-This resulted in the following source and destination points:
 
-| Source        | Destination   | 
-|:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
-
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+I verified that my perspective transform was working as expected by verifing that the lines appear parallel in the warped image.
 
 ![alt text][image4]
 
 ####4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+For more details aoubt how I identified lane-line pixesl and fit their positions with a polynomial, please check the `locate_lines()` function and `polyfit()` function. The following is an example for the fitted line image:
 
 ![alt text][image5]
 
 ####5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+I did this in the `polyfit()` function
 
 ####6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+I implemented this in the last step in the `process_frame()` function (the pipeline).  Here is an example of my result on a test image:
 
 ![alt text][image6]
 
@@ -85,7 +78,7 @@ I implemented this step in lines # through # in my code in `yet_another_file.py`
 
 ####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+My project output is located in (./project_output.mp4)
 
 ---
 
@@ -93,5 +86,5 @@ Here's a [link to my video result](./project_video.mp4)
 
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
-
+In order to finish this project, I closely follow the instruction, and fine-tuned my parameteres using test images to get the best binary images. Initially I used all 3 gradient thresholdings, but it turns out x-directinoal alone is sufficient for the project video. I also used a line class to store the data from previous frames to help identify the lines. This is very helpful to identify sudden changes on the images and still provide a good detection result. 
+The pipeline will not produce a good result on challenge video mainly because the a better binary image is needed. In order to tackle the challenge, I will need to use more gradiant thresholds and fine-tune the parameteres to get a hihg-quality binary image. Another way to improve my pipline is to use dynamic source points for perspective transform. The hard-coded points sometimes don't always produce good warpped images. 
