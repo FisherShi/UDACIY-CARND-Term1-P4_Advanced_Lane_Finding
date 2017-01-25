@@ -2,7 +2,7 @@
 [//]: # (Image References)
 
 [image1]: ./camera_cal/chessboard_undistorted.png "Undistorted Chessboard"
-[image2]: ./camera_cal/test_img_undistorted.jpg "undistorted test image"
+[image2]: ./camera_cal/test_img_undistorted.png "undistorted test image"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
