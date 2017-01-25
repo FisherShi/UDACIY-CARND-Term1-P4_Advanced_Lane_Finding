@@ -3,7 +3,7 @@
 
 [image1]: ./camera_cal/chessboard_undistorted.png "Undistorted Chessboard"
 [image2]: ./camera_cal/test_img_undistorted.png "undistorted test image"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
+[image3]: ./binary_img.png "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
@@ -29,7 +29,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 ![alt text][image2]
 ####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used a combination of HLS color and x directional gradient thresholds to generate a binary image in the helper function section of the IPython notebook located in "./advanced_lane_finding_submission.ipynb".  Here's an example of my output for this step.  
 
 ![alt text][image3]
 
