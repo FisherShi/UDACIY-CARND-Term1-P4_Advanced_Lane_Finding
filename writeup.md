@@ -87,4 +87,5 @@ My project output is located in (./project_output.mp4)
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 In order to finish this project, I closely follow the instruction, and fine-tuned my parameteres using test images to get the best binary images. Initially I used all 3 gradient thresholdings, but it turns out x-directinoal alone is sufficient for the project video. I also used a line class to store the data from previous frames to help identify the lines. This is very helpful to identify sudden changes on the images and still provide a good detection result. 
+
 The pipeline will not produce a good result on challenge video mainly because the a better binary image is needed. In order to tackle the challenge, I will need to use more gradiant thresholds and fine-tune the parameteres to get a hihg-quality binary image. Another way to improve my pipline is to use dynamic source points for perspective transform. The hard-coded points sometimes don't always produce good warpped images. 
