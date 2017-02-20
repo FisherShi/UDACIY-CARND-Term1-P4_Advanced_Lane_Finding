@@ -1,4 +1,4 @@
-**Advanced Lane Finding Project**
+
 [//]: # (Image References)
 
 [image1]: ./camera_cal/chessboard_undistorted.png "Undistorted Chessboard"
@@ -10,6 +10,7 @@
 [video1]: ./project_video.mp4 "Video"
 
 ---
+# UDACITY
 
 ###Camera Calibration
 
