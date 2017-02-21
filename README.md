@@ -29,7 +29,7 @@ In summary, I complete this project by:
 
 The result is shown in the video 'project_output.mp4'
 
-The initial project repo can be found [here](https://github.com/udacity/CarND-Advanced-Lane-Lines)
+The project repo from Udacity can be found [here](https://github.com/udacity/CarND-Advanced-Lane-Lines)
 
 ## Camera Calibration
 
