@@ -10,11 +10,24 @@
 [video1]: ./project_video.mp4 "Video"
 
 ---
-# UDACITY
+# UDACITY Lane Detection Project
 
-###Camera Calibration
+## The Goal of this Project
 
-####1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
+The goal of this project is to write a software pipeline to identify the lane boundaries in a video from a front-facing camera on a car.
+
+## Summary
+
+In summary, I complete this project by:
+
+1. Calibrate the original video footage
+2. Use HLS color and x directional gradient thresholds to generate binary images.
+3. Perspective transform the images
+4. Identified lane-line pixels and fit their positions with a polynomial
+5. Calculated the radius of curvature of the lane and the position of the vehicle with respect to center
+6. Use a line class to store the data from previous frames to help identify the lines
+
+## Camera Calibration
 
 The code for this step is contained in a IPython notebook located in "./camera_cal/Camera_Calibration.ipynb".  
 
@@ -24,11 +37,11 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ![alt text][image1]
 
-###Pipeline (single images)
+The following is an example of a distortion-corrected image:
 
-####1. Provide an example of a distortion-corrected image.
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 ![alt text][image2]
+
+
 ####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 I used a combination of HLS color and x directional gradient thresholds to generate a binary image in the helper function section of the IPython notebook located in "./advanced_lane_finding_submission.ipynb".  Here's an example of my output for this step.  
 
