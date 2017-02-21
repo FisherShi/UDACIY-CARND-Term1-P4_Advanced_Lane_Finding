@@ -27,6 +27,10 @@ In summary, I complete this project by:
 5. Calculated the radius of curvature of the lane and the position of the vehicle with respect to center
 6. Use a line class to store the data from previous frames to help identify the lines
 
+The result is shown in the video 'project_output.mp4'
+
+The initial project repo can be found [here](https://github.com/udacity/CarND-Advanced-Lane-Lines)
+
 ## Camera Calibration
 
 The code for this step is contained in a IPython notebook located in "./camera_cal/Camera_Calibration.ipynb".  
@@ -41,13 +45,13 @@ The following is an example of a distortion-corrected image:
 
 ![alt text][image2]
 
+## Thresholded Binary Image 
 
-####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 I used a combination of HLS color and x directional gradient thresholds to generate a binary image in the helper function section of the IPython notebook located in "./advanced_lane_finding_submission.ipynb".  Here's an example of my output for this step.  
 
 ![alt text][image3]
 
-####3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+## Perspective Transform
 
 The code for my perspective transform includes a function called `warp()`, which appears in the IPython notebook.  The `warp()` function takes as inputs an image (`img`).  I chose to hardcode the source and destination points in the following manner:
 
@@ -70,36 +74,22 @@ I verified that my perspective transform was working as expected by verifing tha
 
 ![alt text][image4]
 
-####4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+## Polyfit
 
 For more details aoubt how I identified lane-line pixesl and fit their positions with a polynomial, please check the `locate_lines()` function and `polyfit()` function. The following is an example for the fitted line image:
 
 ![alt text][image5]
 
-####5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+## Radius of Curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in the `polyfit()` function
+In the `polyfit()` function, I calculated the radius of curvature of the lane and the position of the vehicle with respect to center 
 
-####6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+## Plot the Lane Area 
 
-I implemented this in the last step in the `process_frame()` function (the pipeline).  Here is an example of my result on a test image:
+I also used a line class to store the data from previous frames to help identify the lines. This is very helpful to identify sudden changes on the images and still provide a good detection result. For more details, please check the `process_frame()` function (the pipeline). The following is an example image of my result plotted back down onto the road such that the lane area is identified clearly:
 
 ![alt text][image6]
 
----
+## Ways to Improve
 
-###Pipeline (video)
-
-####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
-
-My project output is located in (./project_output.mp4)
-
----
-
-###Discussion
-
-####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-In order to finish this project, I closely follow the instruction, and fine-tuned my parameteres using test images to get the best binary images. Initially I used all 3 gradient thresholdings, but it turns out x-directinoal alone is sufficient for the project video. I also used a line class to store the data from previous frames to help identify the lines. This is very helpful to identify sudden changes on the images and still provide a good detection result. 
-
-The pipeline will not produce a good result on challenge video mainly because the a better binary image is needed. In order to tackle the challenge, I will need to use more gradiant thresholds and fine-tune the parameteres to get a hihg-quality binary image. Another way to improve my pipline is to use dynamic source points for perspective transform. The hard-coded points sometimes don't always produce good warpped images. 
+The pipeline will not produce a good result on videos with poor lighting condition. In order to tackle the challenge, I will need to use more gradiant thresholds and fine-tune the parameteres to get a hihg-quality binary image. Another way to improve my pipline is to use dynamic source points for perspective transform. The hard-coded points sometimes don't always produce good warpped images. 
