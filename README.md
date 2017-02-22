@@ -7,7 +7,6 @@
 [image4]: ./test_img_warped.png "Warp Example"
 [image5]: ./test_img_polyfit.png "Fit Visual"
 [image6]: ./test_img_output.png "Output"
-[video1]: ./project_video.mp4 "Video"
 
 ---
 # UDACITY Lane Detection Project
